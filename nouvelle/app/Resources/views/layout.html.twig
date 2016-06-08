@@ -1,0 +1,63 @@
+{# empty Twig template #}
+
+
+<!DOCTYPE html>
+<html>
+    <!  layout principal d amysolar>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% block title %}OC Plateforme{% endblock %}</title>
+
+  {% block stylesheets %}
+    {# On charge le CSS de bootstrap depuis le site directement #}
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  {% endblock %}
+</head>
+
+<body>
+  <div class="container">
+    <div id="header" class="jumbotron">
+      <h1>AMYSOLAR LE BATISSEUR DU FUTUR</h1>
+     
+      <p>
+     
+      </div>
+          
+      </p>
+    </div>
+
+    <div class="row">
+      <div id="menu" class="col-md-3">
+        <h3>Les interfaces</h3>
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="{{ path('oc_platform_home') }}">Accueil</a></li>
+          <li><a href="{{ path('oc_platform_add') }}">Ajouter une annonce</a></li>
+        </ul>
+
+        <h2>Infos</h2>
+        {{ render(controller("OCPlatformBundle:Advert:menu", {'limit': 3})) }}
+      </div>
+      <div id="content" class="col-md-9">
+        {% block body %}
+        {% endblock %}
+      </div>
+    </div>
+
+    <hr>
+
+  </div>
+
+  {% block javascripts %}
+    {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  {% endblock %}
+  
+    <footer>
+        <p><center>Amysolar © {{ 'now'|date('Y') }}</center></p>
+    </footer>
+
+</body>
+</html>
